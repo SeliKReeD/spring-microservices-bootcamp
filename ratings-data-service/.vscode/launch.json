@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-RatingsDataServiceApplication<ratings-data-service>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "io.selikreed.ratingsdataservice.RatingsDataServiceApplication",
+            "projectName": "ratings-data-service",
+            "args": ""
+        }
+    ]
+}
