@@ -13,6 +13,7 @@ import org.springframework.web.client.RestTemplate;
 import io.selikreed.model.CatalogItem;
 import io.selikreed.model.Movie;
 import io.selikreed.model.Rating;
+import io.selikreed.model.UserRating;
 
 @RestController
 @RequestMapping("/catalog")
@@ -24,12 +25,9 @@ public class MovieCatalogResource {
     @RequestMapping("/{userId}")
     public List<CatalogItem> getCatalog(@PathVariable(name = "userId") String userId) {
 
-        List<Rating> ratings = Arrays.asList(
-            new Rating("1234", 5),
-            new Rating("6789", 1)
-        );
+        UserRating ratings = restTemplate.getForObject("http://localhost:8083/ratings/users/" + userId, UserRating.class);
 
-        return ratings.stream().map(
+        return ratings.getRatings().stream().map(
             rating ->  {
                 Movie movie = restTemplate.getForObject("http://localhost:8082/movies/" + rating.getMovieId(), Movie.class);
                 return new CatalogItem(movie.getName(), "Test", rating.getRating());
