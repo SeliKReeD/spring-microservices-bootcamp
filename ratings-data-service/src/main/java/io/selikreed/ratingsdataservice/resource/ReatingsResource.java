@@ -1,7 +1,6 @@
 package io.selikreed.ratingsdataservice.resource;
 
 import java.util.Arrays;
-import java.util.List;
 
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,8 +21,8 @@ public class ReatingsResource {
     @RequestMapping("/users/{userId}")
     public UserRating getRatings(@PathVariable(name = "userId") String userId) {
         return new UserRating(Arrays.asList(
-            new Rating("1234", 5),
-            new Rating("6789", 1)
+            new Rating("100", 5),
+            new Rating("500", 1)
         ));
     }
 }

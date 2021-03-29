@@ -1,6 +1,5 @@
 package io.selikreed.moviecatalogservice.resources;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -12,7 +11,6 @@ import org.springframework.web.client.RestTemplate;
 
 import io.selikreed.model.CatalogItem;
 import io.selikreed.model.Movie;
-import io.selikreed.model.Rating;
 import io.selikreed.model.UserRating;
 
 @RestController
@@ -30,7 +28,7 @@ public class MovieCatalogResource {
         return ratings.getRatings().stream().map(
             rating ->  {
                 Movie movie = restTemplate.getForObject("http://movie-info-service/movies/" + rating.getMovieId(), Movie.class);
-                return new CatalogItem(movie.getName(), "Test", rating.getRating());
+                return new CatalogItem(movie.getName(), movie.getDescription(), rating.getRating());
             }
         ).collect(Collectors.toList());
     }
