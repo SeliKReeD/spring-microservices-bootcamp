@@ -1,4 +1,4 @@
-package io.selikreed.model;
+package io.selikreed.moviecatalogservice.model;
 
 import java.util.List;
 
